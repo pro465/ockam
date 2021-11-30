@@ -11,6 +11,8 @@ mod trust_policy;
 pub use trust_policy::*;
 mod local_info;
 pub use local_info::*;
+mod secure_channel_ref;
+pub use secure_channel_ref::*;
 
 // TODO: rename
 pub fn check_message_origin<T: Message>(
