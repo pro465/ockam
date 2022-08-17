@@ -10,18 +10,19 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  lint_cargo_clippy:
-    name: Rust - Lint with Cargo Clippy
+  build:
+    name: Rust - build
     runs-on: ubuntu-20.04
     container:
       image: ghcr.io/build-trust/ockam-builder@sha256:e43dd94652096b03cc472a3c709c7335e8b166cab77b7a7b56f88fa38f3d24cc
     steps:
-      - uses: Swatinem/rust-cache@v2
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
         with:
           ref: ${{ github.event.inputs.commit_sha }}
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/cargo_home_cache
       - uses: ./.github/actions/cargo_target_dir_cache
-      - run: chmod +x test.sh && ./test.sh
+      - run: |
+        cd implementations/rust && ../../gradlew build
+        cd ../../ && chmod +x test.sh && ./test.sh
       - uses: ./.github/actions/cargo_target_dir_pre_cache
