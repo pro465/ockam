@@ -12,14 +12,14 @@ use std::{env::current_exe, fs::OpenOptions, path::PathBuf, process::Command};
 
 /// Stop a node without deleting its state directory
 pub fn stop(pid: i32, sigkill: bool) {
-    let _ = signal::kill(
+    signal::kill(
         Pid::from_raw(pid),
         if sigkill {
             Signal::SIGKILL
         } else {
             Signal::SIGTERM
         },
-    );
+    ).expect("failed to stop node")
 }
 
 /// Execute a series of commands to setup a node
