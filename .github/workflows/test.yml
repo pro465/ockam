@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: Swatinem/rust-cache@v2
-      - run: chmod +x ./test.sh && ./test.sh
+      - run: pwd && chmod +x ~/test.sh && ~/test.sh
