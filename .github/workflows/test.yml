@@ -22,5 +22,5 @@ jobs:
       - uses: ./.github/actions/gradle_cache
       - uses: ./.github/actions/cargo_home_cache
       - uses: ./.github/actions/cargo_target_dir_cache
-      - run: ./test.sh
+      - run: chmod +x test.sh && ./test.sh
       - uses: ./.github/actions/cargo_target_dir_pre_cache
