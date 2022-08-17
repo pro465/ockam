@@ -14,5 +14,5 @@ jobs:
     name: Rust - Lint with Cargo Clippy
     runs-on: ubuntu-20.04
     steps:
-      - uses: Swatinem/rust-cache@v2
-      - run: ls && chmod +x test.sh && ./test.sh
+#      - uses: Swatinem/rust-cache@v2
+      - run: chmod +x test.sh && ./test.sh
